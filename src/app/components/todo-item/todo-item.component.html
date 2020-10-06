@@ -1,0 +1,45 @@
+
+<!-- These are here just to show the structure of the list items -->
+<!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
+
+<li
+    [ngClass]="{ 'completed': todo.completed, 'editing': editing }"
+    >
+    <div class="view">
+      <input
+        [formControl]="completed"
+        class="toggle"
+        type="checkbox"
+        [checked]="todo.completed"
+      >
+      <label (dblclick)="startEditing()">{{ todo.text }}</label>
+      <button (click)="delete()" class="destroy"></button>
+    </div>
+    <input
+      #text
+      (blur)="deleteFocus()"
+      (keyup.enter)="editing = false"
+      [formControl]="description"
+      type="text"
+      class="edit"
+    >
+</li>
+
+
+
+<!-- <li class="completed">
+    <div class="view">
+      <input class="toggle" type="checkbox" checked>
+      <label>Taste JavaScript</label>
+      <button class="destroy"></button>
+    </div>
+    <input class="edit" value="Create a TodoMVC template">
+</li>
+<li>
+    <div class="view">
+      <input class="toggle" type="checkbox">
+      <label>Buy a unicorn</label>
+      <button class="destroy"></button>
+    </div>
+    <input class="edit" value="Rule the web">
+</li> -->
